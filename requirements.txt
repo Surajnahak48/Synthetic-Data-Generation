@@ -1,0 +1,6 @@
+# List of dependencies
+pandas
+numpy
+scikit-learn
+sdv
+sdmetrics

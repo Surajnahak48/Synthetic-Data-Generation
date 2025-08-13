@@ -1,2 +1,3 @@
-# Synthetic-Data-Generation
-Create  synthetic datasets that preserve statistical properties without compromising privacy.
+# Synthetic Data Generation Project
+
+This project generates privacy-preserving synthetic datasets.
