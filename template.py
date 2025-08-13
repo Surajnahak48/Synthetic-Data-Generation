@@ -1,49 +1,79 @@
 import os
+from pathlib import Path
 
-# Define the folder structure
-folders = [
+# Final folder structure definition
+PROJECT_STRUCTURE = [
     "configs",
-    "data/raw",
-    "data/processed",
-    "data/synthetic",
-    "notebooks",
+    "data/bank/processed",
+    "data/bank/raw",
+    "data/healthcare/processed",
+    "data/healthcare/raw",
+    "data/sensors/processed",
+    "data/sensors/raw",
+    "models",
+    "notebooks/tabular",
+    "notebooks/images",
+    "notebooks/time_series",
     "reports",
-    "src/synthgen",
+    "scripts",
+    "src/synthgen/common",
+    "src/synthgen/tabular",
+    "src/synthgen/images",
+    "src/synthgen/time_series",
     "tests"
 ]
 
-# Files to create with initial content
-files_with_content = {
+# Default files to create
+DEFAULT_FILES = {
+    "LICENSE": "",
+    "README.md": "# Synthetic Data Generation Project\n",
+    "requirements.txt": "# Add your dependencies here\n",
+    "reports/README.md": "# Reports and Analysis\n",
+    "configs/base.yaml": "# Base config\n",
     "configs/dataset.yaml": "# Dataset configuration\n",
-    "configs/model.yaml": "# Model configuration\n",
-    "configs/privacy.yaml": "# Privacy settings configuration\n",
+    "configs/model.yaml": "# Model parameters\n",
+    "configs/privacy.yaml": "# Privacy settings\n",
+    "scripts/init_project.py": "# Future setup script\n",
     "notebooks/exploration.ipynb": "",
-    "reports/README.md": "# Reports and analysis go here\n",
     "src/synthgen/__init__.py": "",
-    "src/synthgen/ingest.py": "# Code to load and scan data\n",
-    "src/synthgen/preprocess.py": "# Data preprocessing code\n",
-    "src/synthgen/train.py": "# Train synthetic data generator models\n",
-    "src/synthgen/generate.py": "# Generate synthetic data samples\n",
-    "src/synthgen/evaluate.py": "# Evaluate fidelity, utility, and privacy\n",
-    "src/synthgen/cli.py": "# Command-line interface for the project\n",
-    "src/synthgen/app.py": "# Streamlit or FastAPI app for the project\n",
-    "tests/test_basic.py": "def test_placeholder():\n    assert True\n",
-    "requirements.txt": "# List of dependencies\npandas\nnumpy\nscikit-learn\nsdv\nsdmetrics\n",
-    "README.md": "# Synthetic Data Generation Project\n\nThis project generates privacy-preserving synthetic datasets.\n"
+    "src/synthgen/app.py": "# Web/Streamlit/FastAPI entry\n",
+    "src/synthgen/cli.py": "# CLI entry\n",
+    "src/synthgen/common/__init__.py": "",
+    "src/synthgen/common/utils.py": "# Shared utilities\n",
+    "src/synthgen/common/ingest.py": "# Data ingestion functions\n",
+    "src/synthgen/tabular/__init__.py": "",
+    "src/synthgen/tabular/preprocess.py": "# Preprocessing for tabular data\n",
+    "src/synthgen/tabular/train.py": "# Training for tabular data\n",
+    "src/synthgen/tabular/generate.py": "# Generation for tabular data\n",
+    "src/synthgen/tabular/evaluate.py": "# Evaluation for tabular data\n",
+    "src/synthgen/images/__init__.py": "",
+    "src/synthgen/images/preprocess.py": "# Preprocessing for images\n",
+    "src/synthgen/images/train.py": "# Training for images\n",
+    "src/synthgen/images/generate.py": "# Generation for images\n",
+    "src/synthgen/images/evaluate.py": "# Evaluation for images\n",
+    "src/synthgen/time_series/__init__.py": "",
+    "src/synthgen/time_series/preprocess.py": "# Preprocessing for time-series\n",
+    "src/synthgen/time_series/train.py": "# Training for time-series\n",
+    "src/synthgen/time_series/generate.py": "# Generation for time-series\n",
+    "src/synthgen/time_series/evaluate.py": "# Evaluation for time-series\n",
+    "tests/test_basic.py": "# Basic tests\n"
 }
 
 def create_structure():
-    # Create folders
-    for folder in folders:
-        os.makedirs(folder, exist_ok=True)
-        print(f"Created folder: {folder}")
-    
-    # Create files with initial content
-    for file_path, content in files_with_content.items():
-        with open(file_path, "w", encoding="utf-8") as f:
-            f.write(content)
-        print(f"Created file: {file_path}")
+    """Create project folder structure."""
+    for folder in PROJECT_STRUCTURE:
+        Path(folder).mkdir(parents=True, exist_ok=True)
+        print(f"[DIR]  Created: {folder}")
+
+    for file, content in DEFAULT_FILES.items():
+        file_path = Path(file)
+        if not file_path.exists():
+            file_path.write_text(content)
+            print(f"[FILE] Created: {file}")
+        else:
+            print(f"[SKIP] Exists: {file}")
 
 if __name__ == "__main__":
+    print("🚀 Setting up Synthetic Data Generation project structure...")
     create_structure()
-    print("\n Project structure created successfully!")
+    print("✅ Setup complete!")

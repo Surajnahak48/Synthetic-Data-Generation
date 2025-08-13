@@ -1,3 +1,1 @@
-# Synthetic Data Generation Project
-
-This project generates privacy-preserving synthetic datasets.
+# Multi-Domain Synthetic Data Generation Project

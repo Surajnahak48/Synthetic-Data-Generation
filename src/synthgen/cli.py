@@ -1,1 +1,1 @@
-# Command-line interface for the project
+# CLI entry

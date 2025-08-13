@@ -1,1 +1,1 @@
-# Streamlit or FastAPI app for the project
+# Web/Streamlit/FastAPI entry

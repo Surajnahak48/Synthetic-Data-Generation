@@ -1,6 +1,25 @@
-# List of dependencies
+# Core
 pandas
 numpy
 scikit-learn
+pyyaml
+
+# Tabular
 sdv
 sdmetrics
+
+# Images
+torch
+torchvision
+diffusers
+
+# Time-series
+ydata-synthetic
+tslearn
+
+# Privacy
+opacus
+diffprivlib
+
+# App
+streamlit
